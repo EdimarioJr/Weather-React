@@ -6,16 +6,17 @@ import pegarDado from "../../utils/pegarDado";
 import NormalizeData from "../../utils/NormalizeData";
 
 export default function Cidade(props) {
-  const [clima, setClima] = useState(null);
+  const [clima, setClima] = useState("");
   const [show, setShow] = useState(true);
   let now = new Date();
 
   useEffect(
     function FetchApi() {
       async function pegarNovo() {
-        let climaNovo;
+        let climaNovo = ""
         climaNovo = await pegarDado(props.cidade);
-        setClima(NormalizeData(climaNovo));
+        if(climaNovo)
+          setClima(NormalizeData(climaNovo));
         setShow(true);
       }
       pegarNovo();
@@ -24,10 +25,8 @@ export default function Cidade(props) {
   );
 
   return (
-    // clima == null acontece quando o elemento é renderizado pelça primeira vez, o useEffect é chamado logo após isso,
-    // por isso a condicional é necessária
     <>
-      {clima === null ? (
+      {clima === ""? (
         <h1>Carregando...</h1>
       ) : (
         <CidadeClima show={show}>
@@ -68,7 +67,7 @@ export default function Cidade(props) {
               <p> {clima.list[0].main.humidity} %</p>
             </div>
           </DadosAtmosfericos>
-          <div class="separator"></div>
+          <div className="separator"></div>
           <DiasClima>
             <div>
               <h4>{Semana(now.getDay() + 1)}</h4>

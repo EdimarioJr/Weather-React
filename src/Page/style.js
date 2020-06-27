@@ -8,8 +8,10 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
   }  
 
-body{
-    background-image: linear-gradient(to bottom, #ff7f00,#ffb900);
+  body{
+    background: transparent linear-gradient(to bottom, #ff7f00,#ffb900);
+    background-size: 100% 100%;
+    background-repeat: repeat;
     width: 100%;
     height: 100%;
   }
@@ -17,6 +19,7 @@ body{
 
 export const Container = styled.div`
   width: 70%;
+  height: 100%;
   margin: 0 auto;
   margin-bottom: 20px;
 
@@ -35,7 +38,7 @@ export const WeatherPage = styled.div`
   align-items: center;
   padding-top: 10px;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
   #capitais {
     width: 53%;
@@ -54,7 +57,6 @@ export const WeatherPage = styled.div`
     font-size: ${(props) => (props.cidade ? "300%" : "400%")};
     margin: ${(props) => (props.cidade ? "0" : "100px")} 0;
     font-weight: bolder;
-
   }
 
   #divInput {
@@ -79,23 +81,23 @@ export const WeatherPage = styled.div`
       background-color: white;
       cursor: pointer;
     }
-    @media(max-width:500px){
+    @media (max-width: 500px) {
       width: 95%;
     }
 
-    @media(min-width: 501px) and (max-width: 767px){
+    @media (min-width: 501px) and (max-width: 767px) {
       width: 97%;
     }
 
-    @media(min-width: 768px) and (max-width:1279px){
+    @media (min-width: 768px) and (max-width: 1279px) {
       width: 88%;
     }
 
-    @media (max-width: 768px) {
-      height: 45px;
+    @media (max-width: 767px) {
       input {
         font-size: 15px;
         padding-left: 15px;
+        height: 45px;
       }
     }
   }
@@ -123,14 +125,14 @@ export const WeatherPage = styled.div`
     }
   }
 
-  @media(min-width: 501px) and (max-width: 768px){
-    h1{
+  @media (min-width: 501px) and (max-width: 768px) {
+    h1 {
       font-size: ${(props) => (props.cidade ? "250%" : "350%")};
       margin: ${(props) => (props.cidade ? "10px" : "50px")};
     }
   }
-  
-  @media(min-width: 1280px){
+
+  @media (min-width: 1280px) {
     padding-bottom: 50px;
   }
 `;
@@ -145,26 +147,29 @@ export const ContainerCapitais = styled.div`
     flex-direction: column;
     width: 100%;
   }
-
 `;
 
 export const Capitais = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 4fr;
+  grid-template-columns: 1fr;
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 10px;
 
   h4 {
     font-weight: 400;
+    display: inline;
+    margin-right: 10px;
   }
 
   p {
     font-weight: 700;
+    display: inline;
+    margin-right: 15px;
   }
 
   @media (max-width: 500px) {
     width: 100%;
-    grid-template-columns: 1fr 1fr 6fr;
+    grid-template-columns: 1fr;
     grid-gap: 15px;
     margin-bottom: 15px;
 
@@ -174,7 +179,7 @@ export const Capitais = styled.div`
   }
   @media (min-width: 501px) and (max-width: 767px) {
     width: 100%;
-    grid-template-columns: 1fr 1fr 6fr;
+    grid-template-columns: 1fr;
     grid-gap: 5px;
     margin-right: 10px;
   }
