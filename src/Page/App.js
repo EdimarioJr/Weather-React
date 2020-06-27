@@ -12,7 +12,7 @@ import {
 } from "./style";
 
 function App() {
-  const [cidade, setCidade] = useState("araci");
+  const [cidade, setCidade] = useState("");
   const [input, setInput] = useState("");
 
   const [Rio, setRio] = useState(null);
