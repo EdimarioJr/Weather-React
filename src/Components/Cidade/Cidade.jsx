@@ -13,21 +13,26 @@ export default function Cidade(props) {
   useEffect(
     function FetchApi() {
       async function pegarNovo() {
-        let climaNovo = ""
-        climaNovo = await pegarDado(props.cidade);
-        if(climaNovo)
+        let climaNovo = "";
+        if (props.cidade) climaNovo = await pegarDado(props.cidade);
+        if (climaNovo) {
           setClima(NormalizeData(climaNovo));
-        setShow(true);
+          setShow(true);
+        }else{
+          setClima("")
+          props.temCidade("")
+        }
       }
       pegarNovo();
     },
+    // eslint-disable-next-line
     [props.cidade]
   );
 
   return (
     <>
-      {clima === ""? (
-        <h1>Carregando...</h1>
+      {clima === "" ? (
+        clima
       ) : (
         <CidadeClima show={show}>
           <div className="topo">
@@ -37,7 +42,7 @@ export default function Cidade(props) {
             <div
               onClick={() => {
                 setShow(false);
-                props.temCidade('')
+                props.temCidade("");
               }}
             >
               <i className="fas fa-asterisk"></i>

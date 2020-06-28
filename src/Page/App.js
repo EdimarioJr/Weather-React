@@ -40,6 +40,7 @@ function App() {
       );
     }
     fetchCapitais();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -71,7 +72,7 @@ function App() {
       <Container>
         <WeatherPage cidade={cidade}>
           <h1>Previsão do Tempo</h1>
-          {cidade ? <Cidade cidade={cidade} temCidade={setCidade} /> : ""}
+          <Cidade cidade={cidade} temCidade={setCidade} />
           <div id="divInput">
             <input
               type="text"
@@ -91,7 +92,6 @@ function App() {
           </div>
 
           <hr />
-          {console.log(capitais)}
           {capitais.every((element) => typeof element === "string") ? (
             <h1>Carregando...</h1>
           ) : (
